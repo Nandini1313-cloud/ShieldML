@@ -1,0 +1,9 @@
+[project]
+name = "shieldml"
+version = "1.0.0"
+description = "Real-time financial fraud detection: time-safe features, calibrated ensemble, SHAP, FastAPI, MLflow"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

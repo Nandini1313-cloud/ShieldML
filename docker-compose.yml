@@ -1,0 +1,21 @@
+services:
+  mlflow:
+    image: python:3.12-slim
+    command: sh -c "pip install --no-cache-dir mlflow==2.16.2 && mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts"
+    ports: ["5000:5000"]
+    volumes: ["mlflow_data:/mlflow"]
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      - PORT=8000
+      - SHAP_ENABLED=true
+      # Registry mode (optional): uncomment after registering a model against this server
+      # - MLFLOW_TRACKING_URI=http://mlflow:5000
+      # - MLFLOW_MODEL_URI=models:/ShieldML-Champion@champion
+    # API_KEY should come from your shell / .env, never from the image:
+    env_file:
+      - path: .env
+        required: false
+volumes:
+  mlflow_data:

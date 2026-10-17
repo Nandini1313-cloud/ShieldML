@@ -1,0 +1,12 @@
+# Render blueprint (Docker). Requires models/shieldml_bundle.joblib to be present in the repo/build context.
+services:
+  - type: web
+    name: shieldml-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SHAP_API_MODELS
+        value: xgboost,lightgbm
+      - key: API_KEY
+        sync: false        # set in the Render dashboard, never in git

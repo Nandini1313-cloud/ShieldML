@@ -1,0 +1,20 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.egg-info/
+# data & big artifacts (regenerate with the scripts; see README)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+mlruns/
+mlflow.db
+mlartifacts/
+.idea/
+.vscode/
+*.zip

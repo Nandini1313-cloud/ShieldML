@@ -1,0 +1,14 @@
+.venv
+.git
+__pycache__
+*.pyc
+data
+reports
+mlruns
+mlflow.db
+tests
+docs
+scripts
+.env
+*.zip
+!models/shieldml_bundle.joblib
